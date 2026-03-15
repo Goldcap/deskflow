@@ -97,8 +97,8 @@ ClipboardChunk::assemble(deskflow::IStream *stream, std::string &dataCached, Cli
       return Error;
     } else if (s_expectedSize != dataCached.size()) {
       LOG_ERR(
-          "clipboard: corrupted data, expected size=%zu actual size=%zu (lost %zd bytes)", s_expectedSize,
-          dataCached.size(), static_cast<ssize_t>(s_expectedSize) - static_cast<ssize_t>(dataCached.size())
+          "clipboard: corrupted data, expected size=%zu actual size=%zu (lost %td bytes)", s_expectedSize,
+          dataCached.size(), static_cast<ptrdiff_t>(s_expectedSize) - static_cast<ptrdiff_t>(dataCached.size())
       );
       return Error;
     }
